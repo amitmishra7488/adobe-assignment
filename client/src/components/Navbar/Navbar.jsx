@@ -42,7 +42,7 @@ const Navbar = () => {
 
 
 
-                    <Button rightIcon={<FiLogOut size={22} />} className='nav-links'  >
+                    <Button onClick={handleLogout} rightIcon={<FiLogOut size={22} />} className='nav-links'  >
                         {userId ? "Logout" : "Login"}
                     </Button>
 
@@ -69,7 +69,7 @@ const Navbar = () => {
                             </Link>
                         </MenuItem>
                         <MenuItem >
-                            <Button rightIcon={<FiLogOut size={22} />} className='nav-links'  >
+                            <Button onClick={handleLogout} rightIcon={<FiLogOut size={22} />} className='nav-links'  >
                                 {userId ? "Logout" : "Login"}
                             </Button>
                         </MenuItem>
