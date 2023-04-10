@@ -8,15 +8,30 @@ import { BsFillCloudUploadFill } from 'react-icons/bs'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie'
-
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    FormControl,Input,FormLabel,
+  } from '@chakra-ui/react'
+ 
 
 export default function Suggestions() {
+    const [isOpen, setIsOpen] = useState(false);
     const cookies = new Cookies();
     const userId = cookies.get('userId');
     const [isLargerThan800] = useMediaQuery('(max-width: 800px)', {
         ssr: true,
         fallback: false,
     })
+    const[postLink,setPostLink] = useState();
+    const[caption,setCaption] = useState();
+
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState({});
@@ -32,7 +47,38 @@ export default function Suggestions() {
             console.log(error);
         }
     }
+    const createPost = async (caption,postLink) => {
 
+        try {
+            const res = await axios.post('https://adobe-assignment-three.vercel.app/posts',
+            {
+                content:caption,
+                image:postLink,
+                userId:userId
+            }
+            )
+            console.log(res.data)
+            window.location.reload()
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(caption!=="" && postLink!==""){
+            createPost(caption,postLink);
+        }
+        else{
+            alert("Please enter a valid details");
+        }
+
+        
+
+        setIsOpen(false);
+    }
 
 
 
@@ -64,7 +110,7 @@ export default function Suggestions() {
                             </Box>
                             <Box display="flex" flexDirection={isLargerThan800 ? "column" : "row"} padding={5}>
                                 <Box m={isLargerThan800 ? "0 0 10% 0" : "0 10% 0 0"} >
-                                    <Button size="sm" leftIcon={<BsFillCloudUploadFill />} color="#fff" border="none" padding="4px 6px" backgroundImage="linear-gradient(to right,#e052a0,#f15c41)" borderRadius={3} onClick={() => { navigate("/profile") }}
+                                    <Button size="sm" leftIcon={<BsFillCloudUploadFill />} color="#fff" border="none" padding="4px 6px" backgroundImage="linear-gradient(to right,#e052a0,#f15c41)" borderRadius={3} onClick={() => { setIsOpen(true) }}
                                         _hover={{
                                             backgroundColor: "#e6375a",
                                             backgroundImage: "none!important"
@@ -99,7 +145,46 @@ export default function Suggestions() {
                             <Text color="red" fontSize={30}>No User Logged In</Text>
                         </>
 
+
                 }
+
+<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                <ModalOverlay bg='blackAlpha.300'
+      backdropFilter='blur(2px) hue-rotate(30deg)' />
+                <ModalContent>
+                    <ModalHeader>Create Post</ModalHeader>
+                    <ModalCloseButton />
+                    <form onSubmit={handleSubmit}>
+                        <ModalBody>
+                        <FormControl >
+                                <FormLabel>Add Caption</FormLabel>
+                                <Input
+                                    type="text"
+                                    value={caption}
+                                    onChange={(event) => setCaption(event.target.value)}
+                                />
+                            </FormControl>
+                            
+                            <FormControl>
+                                <FormLabel>Add Post Link</FormLabel>
+                                <Input
+                                    type="text"
+                                    value={postLink}
+                                    onChange={(event) => setPostLink(event.target.value)}
+                                />
+                            </FormControl>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button variant="ghost" mr={3} onClick={() => setIsOpen(false)}>
+                                Cancel
+                            </Button>
+                            <Button colorScheme="blue" type="submit">
+                                Save
+                            </Button>
+                        </ModalFooter>
+                    </form>
+                </ModalContent>
+            </Modal>
             </Box>
         </Box>
     )
