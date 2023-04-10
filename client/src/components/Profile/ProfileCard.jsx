@@ -12,7 +12,7 @@ export default function ProfileCard() {
 
     const profilePic = async () => {
         try {
-            const res = await axios.get(`http://localhost:8080/posts/profilePost/${userId}`)
+            const res = await axios.get(`https://adobe-assignment-flame.vercel.app/posts/profilePost/${userId}`)
             
             console.log(res.data);
             setData(res.data);

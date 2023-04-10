@@ -32,7 +32,7 @@ export default function ProfileDetails() {
     const display = async () => {
 
         try {
-            const res = await axios.get(`http://localhost:8080/users/${userId}`
+            const res = await axios.get(`https://adobe-assignment-flame.vercel.app/users/${userId}`
                 )
 
             console.log(res.data);
@@ -73,7 +73,7 @@ export default function ProfileDetails() {
     const editProfile = async (bio, userName) => {
 
         try {
-            const res = await axios.put(`http://localhost:8080/users/${userId}`,
+            const res = await axios.put(`https://adobe-assignment-flame.vercel.app/users/${userId}`,
                 {
                     bio: bio,
                     name: userName
