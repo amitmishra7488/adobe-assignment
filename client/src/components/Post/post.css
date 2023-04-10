@@ -1,0 +1,60 @@
+.InstagramPost {
+    max-width: 450px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+    margin: 5% 0;
+  }
+  
+  .InstagramPost__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .InstagramPost__profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+  
+  .InstagramPost__username {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  .InstagramPost__post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .InstagramPost__actions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .InstagramPost__actions{
+    display: flex;
+    gap: 2%;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .InstagramPost__likes{
+    font-size: 14px;
+  }
+  
+  .InstagramPost__view-all-comments {
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .InstagramPost__time {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+  }
+  
