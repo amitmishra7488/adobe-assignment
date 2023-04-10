@@ -15,7 +15,7 @@ app.use("/posts", postRoutes);
 app.use('/analytics', analyticRoutes);
 
 app.get('/', async(req,res)=>{
-    res.status(200).send("Welcome to friendZone!");
+    res.status(200).send("Welcome to adobe-assignment");
 });
 
 
