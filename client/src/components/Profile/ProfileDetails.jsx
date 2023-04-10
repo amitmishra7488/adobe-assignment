@@ -96,32 +96,27 @@ export default function ProfileDetails() {
     return (
         <Box className='profileMainDiv' >
             {Object.keys(profile).length <= 0 ? <Spinner textAlign="center" size='xl' />
-                : <Box className='profileContainer' display="flex" w="60%" m="auto" mt={50}>
-                    <Box w='30%'>
+                : <Box className='profileContainer' display="flex" w="60%" m="auto" mt={50} alignItems="center" >
+                    <Box w='30%' >
                         <Box><Image borderRadius='full' boxSize='75%' border="2px solid #ccc" objectFit='cover' src={profile.dp} alt='profile' /></Box>
                     </Box>
                     <Box w='70%'>
-                        <Box display="flex" flexDirection="column" >
+                        <Box display="flex">
 
                             {/* 1st row */}
-                            <HStack spacing='4%' ml='20px' mb="2%">
+                            
+
+                            <Box ml='20px'>
+                                <Text p={0} fontSize="20px">Name: {profile.name}</Text>
+                                <Text p={0}>Bio: {profile.bio}</Text>
+
+                            </Box>
+
+                            <HStack spacing='4%' ml='10%' mb="2%">
                                 <Tooltip hasArrow label='Edit' >
                                     <Button size="sm" onClick={() => setIsOpen(true)}>Edit Profile</Button>
                                 </Tooltip>
                             </HStack>
-
-
-
-                            <HStack spacing='8%' ml='20px' mb="2%">
-                                {/* <Text>{profile.posts.length} posts</Text> */}
-                                
-                            </HStack>
-
-                            <Box ml='20px'>
-                                <Text p={0} fontSize="20px">{profile.name}</Text>
-                                <Text p={0}>{profile.bio}</Text>
-
-                            </Box>
 
                         </Box>
                     </Box>

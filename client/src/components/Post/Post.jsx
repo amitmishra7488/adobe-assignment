@@ -12,6 +12,7 @@ import { useToast } from '@chakra-ui/react'
 const InstagramPost = () => {
   const cookies = new Cookies();
   const userId = cookies.get('userId');
+  
   console.log(userId)
   const [data, setData] = useState([]);
   const toast = useToast()
@@ -46,7 +47,13 @@ const InstagramPost = () => {
       display();
       
   } catch (error) {
-      alert(error.message);
+    toast({
+      title: `something went wrong`,
+      position: 'top',
+      status: 'error',
+      duration: 1000,
+      isClosable: true,
+  });
   }
 
   };
@@ -69,7 +76,13 @@ const InstagramPost = () => {
       display();
       
   } catch (error) {
-      alert(error.message);
+    toast({
+      title: `something went wrong`,
+      position: 'top',
+      status: 'error',
+      duration: 1000,
+      isClosable: true,
+  });
   }
 
   };

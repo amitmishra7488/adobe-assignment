@@ -4,7 +4,7 @@ const auth = require("../middleware/auth");
 const { createPost, postUsingId, updatePost, deletePost } = require('../controllers/post.controller');
 const postModel = require('../models/post.model');
 
-
+//  create a new post
 routes.post("/",async (req, res) => {
     const {userId}=req.body;
     const data={
@@ -22,7 +22,7 @@ routes.post("/",async (req, res) => {
     }
 })
 
-
+// get post by id
 routes.get('/:id', async (req, res) => {
     const postId = req.params.id;
     const post = await postUsingId(postId);
@@ -35,7 +35,7 @@ routes.get('/:id', async (req, res) => {
     }
 });
 
-
+//  update post by id
 routes.put('/:id', async (req, res) => {
     const postId = req.params.id;
     const data = req.body;
@@ -48,6 +48,7 @@ routes.put('/:id', async (req, res) => {
     }
 })
 
+// delete post by id
 routes.delete('/:id', async (req, res) => {
     const postId = req.params.id;
     const post = await deletePost(postId);
@@ -59,7 +60,7 @@ routes.delete('/:id', async (req, res) => {
     }
 })
 
-
+//  like a post
 routes.post("/:id/like", async (req, res) => {
     try {
         const id = req.params.id;
@@ -92,7 +93,7 @@ routes.post("/:id/like", async (req, res) => {
     }
 })
 
-
+// unlike a post
 routes.post("/:id/unlike",async (req, res) => {
     try {
         const id = req.params.id;
@@ -127,6 +128,7 @@ routes.post("/:id/unlike",async (req, res) => {
 })
 
 
+// get a user all posts
 routes.get("/profilePost/:id", async(req,res)=>{
     try {
         const userId = req.params.id;
