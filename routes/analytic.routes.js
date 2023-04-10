@@ -13,7 +13,7 @@ routes.get('/users', async (req, res) => {
         res.status(404).json(users);
     }
     else {
-        res.status(200).json({ users: users });
+        res.status(200).json(users);
     }
 });
 

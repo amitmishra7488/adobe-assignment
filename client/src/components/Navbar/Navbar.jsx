@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="navbar-right">
 
 
-                    <Link to='/' className='nav-links'>
+                    <Link to='/analytics' className='nav-links'>
                         <Text>Analytics</Text>
                         <FiSend size={30} />
                     </Link>
@@ -57,7 +57,7 @@ const Navbar = () => {
                     />
                     <MenuList bg='#FAFAFA'>
                         <MenuItem >
-                            <Link to='/' className='nav-links'>
+                            <Link to='/analytics' className='nav-links'>
                                 <Text>Analytics</Text>
                                 <FiSend size={30} />
                             </Link>
