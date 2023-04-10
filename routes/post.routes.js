@@ -129,11 +129,13 @@ routes.post("/:id/unlike",async (req, res) => {
 
 routes.get("/profilePost/:id", async(req,res)=>{
     try {
-        const id = req.params.id;
-
-        const post = postModel.find({ user_id: id })
-        console.log(post);
-        res.status(200).json(post);
+        const userId = req.params.id;
+        const posts = await postModel.find({ user_id: userId });
+        if (posts.length === 0) {
+        res.status(404).json({ message: "No posts found for this user." });
+        } else {
+        res.status(200).json(posts);
+        }
     } catch (error) {
         res.status(404).json({message: error.message});
     }
