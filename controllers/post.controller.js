@@ -102,11 +102,25 @@ const getAllPost = async () => {
 
 }
 
+const  topLikedPosts= async(req, res) =>{
+    try {
+      const posts = await postModel.find().populate('user_id').sort({ likes: -1 }).limit(5);
+      return posts
+    } catch (err) {
+      console.error(err);
+      return {
+        status: 'failed',
+        message: error.message
+    }
+    }
+  }
+
 module.exports = 
 {
     createPost,
     postUsingId,
     updatePost,
     deletePost,
-    getAllPost
+    getAllPost,
+    topLikedPosts
 }

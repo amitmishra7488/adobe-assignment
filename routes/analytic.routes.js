@@ -1,7 +1,7 @@
 const express = require('express');
 const userModel = require('../models/user.model');
 const { getAllUser } = require('../controllers/user.controller');
-const { getAllPost } = require('../controllers/post.controller');
+const { getAllPost, topLikedPosts } = require('../controllers/post.controller');
 const routes = express.Router();
 require('dotenv').config()
 
@@ -28,6 +28,20 @@ routes.get('/posts', async (req, res) => {
         res.status(200).json(posts);
     }
 });
+
+
+routes.get('/posts/top-liked', async (req, res) => {
+
+    const posts = await topLikedPosts();
+    if (posts.status) {
+        res.status(404).json(posts);
+    }
+    else {
+        res.status(200).json(posts);
+    }
+
+})
+
 
 
 
