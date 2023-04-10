@@ -1,14 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./navbar.css"
 import { FiSend } from "react-icons/fi"
 import { IoPersonOutline } from 'react-icons/io5'
 import { FiLogOut } from 'react-icons/fi'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { IconButton, Menu, MenuButton, MenuItem, MenuList, Text, Tooltip, useMediaQuery } from '@chakra-ui/react';
-
+import { IconButton, Menu, MenuButton, MenuItem, MenuList, Text, Tooltip, useMediaQuery, Button } from '@chakra-ui/react';
+import Cookies from 'universal-cookie'
 const Navbar = () => {
+    const navigate = useNavigate();
+    const cookies = new Cookies();
+
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+    const userId = cookies.get('userId');
+    const handleLogout = () => {
+        cookies.remove('token', { path: '/' });
+        cookies.remove('userId', { path: '/' });
+        navigate("/login");
+    }
     return (
         <nav>
             <div className="navbar-left">
@@ -33,10 +42,9 @@ const Navbar = () => {
 
 
 
-                    <Link to='/login' className='nav-links'  >
-                        <Text>Logout</Text>
-                        <FiLogOut size={30} />
-                    </Link>
+                    <Button rightIcon={<FiLogOut size={22} />} className='nav-links'  >
+                        {userId ? "Logout" : "Login"}
+                    </Button>
 
                 </div>
                 :
@@ -61,10 +69,9 @@ const Navbar = () => {
                             </Link>
                         </MenuItem>
                         <MenuItem >
-                            <Link to='/login' className='nav-links'  >
-                                <Text>Logout</Text>
-                                <FiLogOut size={30} />
-                            </Link>
+                            <Button rightIcon={<FiLogOut size={22} />} className='nav-links'  >
+                                {userId ? "Logout" : "Login"}
+                            </Button>
                         </MenuItem>
 
                     </MenuList>
