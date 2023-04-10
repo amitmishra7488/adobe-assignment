@@ -1,6 +1,7 @@
 const express = require('express');
-const connectDB = require('./config/db');
 const cors = require('cors');
+const connectDB = require('./config/db');
+
 const userRoutes = require('./routes/user.routes')
 const postRoutes = require("./routes/post.routes");
 const analyticRoutes = require('./routes/analytic.routes');
