@@ -21,7 +21,7 @@ function Signup() {
         
 
         try {
-            const res = await axios.post('https://adobe-assignment-flame.vercel.app/users', {
+            const res = await axios.post('https://adobe-assignment-three.vercel.app/users', {
                 name: username,
                 email: email,
                 password: password,

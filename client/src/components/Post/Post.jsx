@@ -18,7 +18,7 @@ const InstagramPost = () => {
 
   const display = async () => {
     try {
-      const res = await fetch('https://adobe-assignment-flame.vercel.app/analytics/posts/')
+      const res = await fetch('https://adobe-assignment-three.vercel.app/analytics/posts/')
       const data = await res.json();
       console.log(data);
       setData(data);
@@ -31,7 +31,7 @@ const InstagramPost = () => {
 
   const handleLikeClick = async (postId) => {
     try {
-      const res = await axios.post(`https://adobe-assignment-flame.vercel.app/posts/${postId}/like`,
+      const res = await axios.post(`https://adobe-assignment-three.vercel.app/posts/${postId}/like`,
           {
             userId:cookies.get('userId')
           }
@@ -54,7 +54,7 @@ const InstagramPost = () => {
   const handleUnlikeClick = async (postId) => {
     
     try {
-      const res = await axios.post(`https://adobe-assignment-flame.vercel.app/posts/${postId}/unlike`,
+      const res = await axios.post(`https://adobe-assignment-three.vercel.app/posts/${postId}/unlike`,
           {
             userId:cookies.get('userId')
           }

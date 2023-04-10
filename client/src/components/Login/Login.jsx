@@ -21,7 +21,7 @@ function Login() {
 
     const display = async (email, password) => {
         try {
-            const res = await axios.post('https://adobe-assignment-flame.vercel.app/users/login', {
+            const res = await axios.post('https://adobe-assignment-three.vercel.app/users/login', {
                 email: email,
                 password: password
             })

@@ -24,7 +24,7 @@ export default function Suggestions() {
     const profileDetails = async () => {
 
         try {
-            const res = await axios.get(`https://adobe-assignment-flame.vercel.app/users/${userId}`)
+            const res = await axios.get(`https://adobe-assignment-three.vercel.app/users/${userId}`)
             console.log(res.data);
             setUserData(res.data);
         }
