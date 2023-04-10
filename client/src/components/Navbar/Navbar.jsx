@@ -20,9 +20,11 @@ const Navbar = () => {
     }
     return (
         <nav>
-            <div className="navbar-left">
-                <img src="https://www.pngfind.com/pngs/m/494-4941182_analog-for-mac-photography-logo-icon-png-transparent.png" alt="Instagram logo" className="navbar-logo" />
-            </div>
+            <Link to='/'>
+                <div className="navbar-left">
+                    <img src="https://www.pngfind.com/pngs/m/494-4941182_analog-for-mac-photography-logo-icon-png-transparent.png" alt="Instagram logo" className="navbar-logo" />
+                </div>
+            </Link>
 
             {isLargerThan768 ?
                 <div className="navbar-right">
